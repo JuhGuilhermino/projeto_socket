@@ -12,7 +12,6 @@ class SearchMovie:
     """
     def __init__(self):
         self.client = OMDBClient()
-        self.body = ""
 
     """
     Solicitação do título do filme e relaiza busca dos dados na API
@@ -20,30 +19,27 @@ class SearchMovie:
     def get_movie(self, title):
         self.title = title
         self.header, self.body = self.client.get_movie_data(self.title)
-    
-    """
-    Retorna header JSON
-    """
-    def set_header(self):
-        return self.header
-    
-    """
-    Retorna body JSON
-    """
-    def set_body(self):
-        return self.body
 
     """
-    Exibir fixa tecnica do filme editada
+    Exibe cabeçalho da mensagem do HTTP
+    """
+    def print_header(self):
+        print(self.header)
+
+    """
+    Exibe dados do filme
     """
     def print_data(self):
-        print("\n------------------------ HEADER HTTP ---------------------------")
-        print(self.header)
-        print("\n----------------------- SEARCH RESULT --------------------------")
         dados = json.loads(self.body)
-        name = dados["Title"]
-        print(f"Nome: {name}")
-    
+
+        title = dados["Title"]
+        year = dados["Year"]
+        genre = dados["Genre"]
+        director = dados["Director"]
+        language = dados["Language"]
+        plot = dados["Plot"]
+
+        print(f"Title: {title} \nYear: {year} \nGenre: {genre} \nDirector: {director} \nLanguage: {language} \nPlot:\n    {plot}\n\n")
     
     
 
