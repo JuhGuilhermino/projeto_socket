@@ -1,17 +1,20 @@
 from search_movie import SearchMovie #importa classe
 
-print("=========================== WELCOME ===========================\n")
+print("=========================== MEUS FILMES ===========================\n")
+print("------------------------------- MENU ------------------------------\n")
+print("1 - Buscar um filme. \n")
+print("2 - Vizualizar filmes salvos. \n")
+print("3 - Sair. \n")
+op = int(input(">>> Informe a operação desejada:  "))
 
-START = input("Do you wish to search? (Y/N) :  ")
-
-while START == "Y":
-    title = input("What’s the title of the movie?  ")
+if op == 1:
+    title = input("Informe o nome do filme:   ")
 
     search = SearchMovie()
     search.get_movie(title)
     search.print_data()
+elif op == 2:
+    print("Operaçaõ não implementada")
 
-    START = input("Do you wish to search? (Y/N) :  ")
-
-
-
+else: 
+     print("Operação INVÁLIDA!")   
