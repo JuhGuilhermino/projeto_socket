@@ -1,14 +1,17 @@
-from omdb_client import OMDBClient #importa classe
+from search_movie import SearchMovie #importa classe
 
-API_KEY = "5511c917"  # Substitua pela sua API key do OMDB
-movie_title = "Barbie"
+print("=========================== WELCOME ===========================\n")
 
-# Criar uma instância do cliente e obter os dados do filme
-client = OMDBClient(API_KEY)
-headers, body = client.get_movie_data(movie_title)
+START = input("Do you wish to search? (Y/N) :  ")
 
-# Exibir o resultado
-print("=== Cabeçalhos ===")
-print(headers)
-print("\n=== Corpo ===")
-print(body)
+while START == "Y":
+    title = input("What’s the title of the movie?  ")
+
+    search = SearchMovie()
+    search.get_movie(title)
+    search.print_data()
+
+    START = input("Do you wish to search? (Y/N) :  ")
+
+
+
